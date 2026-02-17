@@ -1,31 +1,20 @@
 #!/usr/bin/env python3
 """
-Module for creating asyncio Tasks from coroutines.
-
-This module provides functions for wrapping coroutines into asyncio.Task objects
-for better task management and scheduling in asynchronous programs.
+This module contains the function task_wait_random
+that returns an asyncio.Task object.
 """
 import asyncio
-from basic_async_syntax import wait_random
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def task_wait_random(max_delay: int) -> asyncio.Task[float]:
+def task_wait_random(max_delay: int) -> asyncio.Task:
     """
-    Create an asyncio.Task from the wait_random coroutine.
-
-    Takes a max_delay parameter and wraps the wait_random coroutine
-    into an asyncio.Task object that can be scheduled and managed
-    by the event loop.
+    Takes an integer max_delay and returns an asyncio.Task.
 
     Args:
-        max_delay: Maximum delay value passed to wait_random coroutine
+        max_delay (int): The maximum delay for the wait_random function.
 
     Returns:
-        An asyncio.Task object wrapping the wait_random coroutine
-
-    Example:
-        >>> task = task_wait_random(5)
-        >>> print(task.__class__)
-        <class '_asyncio.Task'>
+        asyncio.Task: The task that runs wait_random.
     """
     return asyncio.create_task(wait_random(max_delay))
